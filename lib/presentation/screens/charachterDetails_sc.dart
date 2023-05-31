@@ -1,3 +1,4 @@
+import 'package:bloc_breaking_bad/app_constants.dart';
 import 'package:bloc_breaking_bad/data/models/charachter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -22,7 +23,7 @@ class charachterDetailsScreen extends StatelessWidget {
   
   Widget content() {
     return SliverList(delegate: SliverChildListDelegate([
-      buildText('Name: ',charachter.name),
+      buildText('Name: ',charachter.name,),
       buildDivider(300),
       buildText('eposide ',charachter.episode.join(' / ')),
       buildDivider(300),
@@ -30,11 +31,20 @@ class charachterDetailsScreen extends StatelessWidget {
       buildDivider(300),
       buildText('species: ',charachter.species),
       buildDivider(300),
-      SizedBox(height: 500,)
+      buildText('Created: ',charachter.created,),
+      buildDivider(300),
+      buildText('Status ',charachter.status),
+      buildDivider(300),
+      buildText('Type: ',charachter.type),
+      buildDivider(300),
+      SizedBox(height: 100,)
+      
+     
     ]));
   }
   
   appBar() {return SliverAppBar(
+    backgroundColor: Colors.black,
     expandedHeight:600 ,
     //toolbarHeight:600 ,
     pinned: true,
@@ -49,8 +59,8 @@ class charachterDetailsScreen extends StatelessWidget {
   buildText(String title,String info) {
     return RichText(maxLines: 1,text: TextSpan(
       children: [
-        TextSpan(text: title,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold)),
-        TextSpan(text: info,style: TextStyle(fontSize: 10,overflow: TextOverflow.ellipsis)),
+        TextSpan(text: title,style:constants.fontStyle1),
+        TextSpan(text: info,style: constants.fontStyle1.copyWith(fontSize: 20)),
       ]
     ));
   }
